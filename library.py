@@ -13,7 +13,7 @@ def list_available_books():
     books = cursor.fetchall()
 
     if not books:
-        print("\nAbhi koi bhi kitaab uplabdh nahi hai.")
+        print("\nNo book available.")
         return
 
     print("\nAvailable Books:")
@@ -21,9 +21,7 @@ def list_available_books():
         print(f" - {book[0]}")
 
 def issue_book(student_id, student_name, book_name, issue_date, return_date):
-    """
-    Agar kitaab available ho, toh use student ko issue karo.
-    """
+    
     cursor.execute("SELECT status FROM books WHERE book_name=?", (book_name,))
     status = cursor.fetchone()
 
@@ -39,9 +37,7 @@ def issue_book(student_id, student_name, book_name, issue_date, return_date):
         print("Book not available for issue.")
 
 def submit_book(student_id, actual_return_date):
-    """
-    Book return karte waqt fine calculate karo agar late return hua ho.
-    """
+    
     cursor.execute("SELECT book_name, return_date FROM student WHERE student_id=?", (student_id,))
     record = cursor.fetchone()
 
@@ -106,3 +102,4 @@ def main():
 if __name__ == "__main__":
     main()
     conn.close()
+
