@@ -1,7 +1,7 @@
 import sqlite3
 from datetime import datetime
 
-# SQLite database se connection banao
+
 conn = sqlite3.connect('library.db')
 cursor = conn.cursor()
 
@@ -102,4 +102,5 @@ def main():
 if __name__ == "__main__":
     main()
     conn.close()
+
 
